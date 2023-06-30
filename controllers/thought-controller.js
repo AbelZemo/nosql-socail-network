@@ -51,8 +51,8 @@ export const createThought = async function (req, res) {
         { new: true }
       );
     })
-    .then((dbUserData) => {
-      if (!dbUserData) {
+    .then((thoughts) => {
+      if (!thoughts) {
         return res
           .status(404)
           .json({ message: "Thought created but no user with this id!" });
@@ -91,16 +91,16 @@ export const deleteThought = async function (req, res) {
         return res.status(404).json({ message: " There is no thought with this id!" });
       }
       // When the thoughts deleted from db then,remove thought id from user's `thoughts` field
-    //   return User.findOneAndUpdate(
-    //     { thoughts: params.id },
-    //     { $pull: { thoughts: params.id } }, //$pull removes from an existing values that match a specified condition.
-    //     { new: true }
-    //   );
-    // })
-    // .then((dbUserData) => {
-    //   if (!dbUserData) {
-    //     return res.status(404).json({ message: "Thought deleted but no user with this id!" });
-    //   }
+      return User.findOneAndUpdate(
+        { thoughts: params.id },
+        { $pull: { thoughts: params.id } }, //$pull removes from an existing values that match a specified condition.
+        { new: true }
+      );
+    })
+    .then((thoughts) => {
+      if (!thoughts) {
+        return res.status(404).json({ message: "Thought deleted but no user with this id!" });
+      }
       return res.json({ message: "Thought successfully deleted!" });
     })
     .catch((err) => {

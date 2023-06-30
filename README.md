@@ -116,5 +116,6 @@ Please feel free to contact me if you need any further information:
 
 #### Walkthrough Video
 
-[Click me to see the demo video!]("")
+[Click me to see the demo video!](https://www.youtube.com/watch?v=0ZPkYQL4azM)
+
 
